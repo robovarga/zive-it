@@ -3,10 +3,9 @@
 include_once "common.php";
 
 
+$faces_query = dibi::query('SELECT * FROM faces');
+$faces = $faces_query->fetchAll();
 
+$latteParameters['users'] = $faces;
 
-$parameters = [
-    'items' => ['one', 'two', 'three'],
-];
-
-$latte->render('templates/home.html', $parameters);
+$latte->render('templates/home.html', $latteParameters);

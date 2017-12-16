@@ -10,6 +10,9 @@ Debugger::enable();
 $latte = new Latte\Engine;
 $latte->setTempDirectory('tempdir');
 
+$latteParameters = array(
+    "photosCDN" => 'http://photos.betarmy.org/',
+);
 
 // connect to database
 dibi::connect([
