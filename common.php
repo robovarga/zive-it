@@ -23,12 +23,3 @@ dibi::connect([
 
 
 
-
-$parameters = [
-    'items' => ['one', 'two', 'three'],
-];
-
-// kresli na výstup
-$latte->render('index.html', $parameters);
-
-echo "ok";
