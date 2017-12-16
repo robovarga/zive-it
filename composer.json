@@ -1,0 +1,5 @@
+{
+    "require": {
+        "dibi/dibi": "v3.1.0"
+    }
+}
