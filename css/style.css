@@ -8,6 +8,9 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     line-height: 1.8 !important;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 html {
@@ -73,4 +76,8 @@ a:hover,a:focus {
 .thumbnail h3{
     color: white;
     margin-top: 5px;
+}
+
+.panel {
+    background: transparent;
 }
