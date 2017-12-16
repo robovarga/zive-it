@@ -45,28 +45,61 @@ class Templated6aec42a61 extends Latte\Runtime\Template
 
 
 	<!-- Galery -->
-	<section id="portfolio">
+	<section>
 		<h2 align="center">Neznáme osoby</h2>
 		<div class="container">
 			<div class="row">
 
 				<div class="col-md-4 thumbnail">
+					<div class="hovereffect">
 						<div class="col-md-12 photo-4"></div>
+						<a href="#mybox" data-toggle="modal" data-slide-to="3">
+							<div class="overlay">
+								Meno:<br>
+								<input type="text" name="name" autocomplete="off"><br>
+							</div>
+						</a>
+					</div>
 				</div>
 
 				<div class="col-md-4 thumbnail">
+					<div class="hovereffect">
 						<div class="col-md-12 photo-4"></div>
+						<a href="#mybox" data-toggle="modal" data-slide-to="3">
+							<div class="overlay">
+									Meno:<br>
+									<input type="text" name="name" autocomplete="off"><br>
+							</div>
+						</a>
+					</div>
 				</div>
 
 				<div class="col-md-4 thumbnail">
+					<div class="hovereffect">
 						<div class="col-md-12 photo-4"></div>
+						<a href="#mybox" data-toggle="modal" data-slide-to="3">
+							<div class="overlay">
+									Meno:<br>
+									<input type="text" name="name" autocomplete="off"><br>
+							</div>
+						</a>
+					</div>
 				</div>
 
 				<div class="col-md-4 thumbnail">
+					<div class="hovereffect">
 						<div class="col-md-12 photo-4"></div>
+						<a href="#mybox" data-toggle="modal" data-slide-to="3">
+							<div class="overlay">
+									Meno:<br>
+									<input type="text" name="name" autocomplete="off"><br>
+							</div>
+						</a>
+					</div>
 				</div>
 
 
+				</div>
 			</div>
 		</div>	
 	</section>

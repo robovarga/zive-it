@@ -13,7 +13,7 @@ $latte->setTempDirectory('tempdir');
 
 // connect to database
 dibi::connect([
-    'driver'   => 'mysql',
+    'driver'   => 'mysqli',
     'host'     => 'mariadb101.websupport.sk',
     'username' => 'usnynhbq',
     'database' => 'usnynhbq',

@@ -25,8 +25,10 @@ p{
 	font-weight:300;
 }
 
-form {
+input {
     text-align: center;
+    color:black;
+    width: 100px;
 }
 
 section {
@@ -198,6 +200,10 @@ a:hover,a:focus {
     max-width: none;
 	width: 50%;
 	object-fit: cover;
+}
+
+.back {
+    background-color: snow;
 }
 
 
