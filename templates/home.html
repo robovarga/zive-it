@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	<title>Face recognition</title>
+
     <!-- Css -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
@@ -42,23 +44,8 @@
 				<span class="navbar-text" style="color: white; font-size: 20px">People</span>
 			</div>
 
-			<div class="row">
-				{foreach $users as $user}
-				<div class="col-sm-6 col-md-2">
-					<div class="thumbnail">
-						<img src="{$photosCDN}{$user->photo}" alt="" class="img-thumbnail">
-						<div class="caption value">
-							<h3 class="user-name">{$user->name}</h3>
-						</div>
-						<div class="caption input">
-							<form action="index.php">
-								<input type="text" name="user-name" class="name-input" value="{$user->name}">
-								<input type="hidden" name="user-id" value="{$user->id}">
-							</form>
-						</div>
-					</div>
-				</div>
-				{/foreach}
+			<div class="row" id="faces-wrap" data-updated="{$currentTimestamp}">
+				{include face.html, users => $users}
 			</div>
 	</section>
 	

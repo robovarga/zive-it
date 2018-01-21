@@ -3,9 +3,12 @@
 include_once "vendor/autoload.php";
 
 use Tracy\Debugger;
+use Symfony\Component\Yaml\Yaml;
+
 
 Debugger::enable();
 
+$config = Yaml::parseFile(__DIR__ . '/config.yaml');
 
 $latte = new Latte\Engine;
 $latte->setTempDirectory('tempdir');
@@ -16,14 +19,7 @@ $latteParameters = array(
 
 // connect to database
 
-$dbOptions = [
-    'driver'   => 'mysqli',
-    'host'     => 'mariadb101.websupport.sk',
-    'username' => 'usnynhbq',
-    'database' => 'usnynhbq',
-    'password' => 'KKZUSMp5ci',
-    'port' => '3312'
-];
+$dbOptions = $config['database'];
 
 
 $database = new Dibi\Connection($dbOptions);

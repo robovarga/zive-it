@@ -47,6 +47,8 @@ $('.navbar-toggle').click(function(){
 		var valueWrap = $(this).parent(),
 			inputWrap = valueWrap.parent().find(".caption.input");
 	
+
+		$(this).focus();
 	
 		valueWrap.hide();
 		inputWrap.show();
@@ -72,7 +74,7 @@ $('.navbar-toggle').click(function(){
 			method: "POST",
 			url: "index.php",
 			data: $(this).serialize(),
-			success: function (data, status, daco) {
+			success: function (data, status) {
 				
 				nameH3.text(data.userNewName);
 				
@@ -81,7 +83,6 @@ $('.navbar-toggle').click(function(){
 				
 				console.log(data);
 				console.log(status);
-				console.log(daco);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				// console.log(jqXHR);
@@ -89,13 +90,49 @@ $('.navbar-toggle').click(function(){
 			}
 		});
 
-
-		console.log("ide");
 		return false;
 	});
 
+
+	setInterval(function(){ fetchFaces(); }, 5000);
+
+	
 });
 
+function fetchFaces() {
+	var facesWrap = $('#faces-wrap'),
+		currentTimestamp = facesWrap.data('updated');
+	
+	var data = {
+		"do": "fetch-faces",
+		"updated": currentTimestamp,
+	};
+
+
+	$.ajax({
+		dataType: "json",
+		method: "POST",
+		url: "index.php",
+		data: data,
+		success: function (data, status) {
+			
+			// nameH3.text(data.userNewName);
+			
+			// valueWrap.show();
+			// inputWrap.hide();
+			
+			facesWrap.prepend(data.html);
+			facesWrap.data('updated', data.lastUpdated);
+
+			console.log(data);
+			console.log(status);
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			// console.log(jqXHR);
+			console.log("response status:", errorThrown);
+		}
+	});
+}
 
  
 

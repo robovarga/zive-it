@@ -2,6 +2,7 @@
     "require": {
         "dibi/dibi": "v3.1.0",
         "tracy/tracy": "v2.4.10",
-        "latte/latte": "v2.4.6"
+        "latte/latte": "v2.4.6",
+        "symfony/yaml": "v3.4.3"
     }
 }

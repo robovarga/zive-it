@@ -11,6 +11,20 @@ class ComposerStaticInit80e52b08f5acc90bb6c559208c792614
         '0097ca414fcb37c7130ac24b05f485f8' => __DIR__ . '/..' . '/dibi/dibi/src/loader.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\Yaml\\' => 23,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
+    );
+
     public static $classMap = array (
         'Dibi\\Bridges\\Nette\\DibiExtension22' => __DIR__ . '/..' . '/dibi/dibi/src/Dibi/Bridges/Nette/DibiExtension22.php',
         'Dibi\\Bridges\\Tracy\\Panel' => __DIR__ . '/..' . '/dibi/dibi/src/Dibi/Bridges/Tracy/Panel.php',
@@ -116,6 +130,8 @@ class ComposerStaticInit80e52b08f5acc90bb6c559208c792614
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit80e52b08f5acc90bb6c559208c792614::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit80e52b08f5acc90bb6c559208c792614::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit80e52b08f5acc90bb6c559208c792614::$classMap;
 
         }, null, ClassLoader::class);
