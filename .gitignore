@@ -1,2 +1,3 @@
 .idea
 tempdir/*
+app/config.yaml
