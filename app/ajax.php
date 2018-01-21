@@ -1,12 +1,12 @@
 <?php
 
-$array = array('status' => "DECIMATE!");
+$response = array('status' => "DECIMATE!");
 
 if ( !isset($_POST['do']) ) {
-    $array['status'] = "ERROR";
-    $array["message"] = "Parameter 'do' missing.";
+    $response['status'] = "ERROR";
+    $response["message"] = "Parameter 'do' missing.";
 
-    response($array, 404);
+    response($response, 404);
 }
 
 $action = $_POST['do'];
@@ -16,40 +16,40 @@ if ($action == "change-name") {
     $user = $database->fetch("SELECT * FROM faces WHERE id = ?;", $_POST['user-id']);
 
     if(!$user) {
-        $array["status"] = "ERROR";
-        $array["message"] = "user not exists.";
+        $response["status"] = "ERROR";
+        $response["message"] = "User not exists.";
 
-        response($array, 404);
+        response($response, 404);
     }
 
     $affectedRows = $database->query('UPDATE faces SET', [
         'name' => $_POST['user-name'],
     ], 'WHERE id = ?', $_POST['user-id']);
 
-    $array['userId'] = $user->id;
-    $array['userOldName'] = $user->name;
-    $array['userNewName'] = $_POST['user-name'];
+    $response['userId'] = $user->id;
+    $response['userOldName'] = $user->name;
+    $response['userNewName'] = $_POST['user-name'];
 
 
 }elseif ($action == "fetch-faces") {
 
     $lastUpdated = $_POST['updated'];
     
-    $array["lastUpdated"] = date("Y-m-d H:i:s");
+    $response["lastUpdated"] = date("Y-m-d H:i:s");
 
     $users = $database->fetchAll("SELECT * FROM faces WHERE created >= ? ORDER BY created DESC;", $lastUpdated);
     
     $latteParameters = array(
-        "photosCDN" => 'http://photos.betarmy.org/',
+        "photosCDN" => $config['photosCND'],
         "users" => $users,
     );
 
-    $array["html"] = $latte->renderToString('templates/face.html', $latteParameters);
+    $response["html"] = $latte->renderToString('templates/face.html', $latteParameters);
 
 }
 
 
-response($array);
+response($response);
 
 
 

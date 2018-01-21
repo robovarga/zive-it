@@ -14,7 +14,7 @@ $latte = new Latte\Engine;
 $latte->setTempDirectory('tempdir');
 
 $latteParameters = array(
-    "photosCDN" => 'http://photos.betarmy.org/',
+    "photosCDN" => $config['photosCND'],
 );
 
 // connect to database
