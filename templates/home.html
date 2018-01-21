@@ -47,8 +47,14 @@
 				<div class="col-sm-6 col-md-2">
 					<div class="thumbnail">
 						<img src="{$photosCDN}{$user->photo}" alt="" class="img-thumbnail">
-						<div class="caption">
-							<h3>{$user->name}</h3>
+						<div class="caption value">
+							<h3 class="user-name">{$user->name}</h3>
+						</div>
+						<div class="caption input">
+							<form action="index.php">
+								<input type="text" name="user-name" class="name-input" value="{$user->name}">
+								<input type="hidden" name="user-id" value="{$user->id}">
+							</form>
 						</div>
 					</div>
 				</div>

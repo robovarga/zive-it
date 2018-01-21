@@ -12,6 +12,9 @@ $('.navbar-toggle').click(function(){
 // Back to top Arrow
  
  jQuery(document).ready(function($){
+
+	$(document).find(".caption.input").hide();
+
 	// browser window scroll (in pixels) after which the "back to top" link is shown
 	var offset = 300,
 		//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
@@ -38,28 +41,59 @@ $('.navbar-toggle').click(function(){
 		);
 	});
 
-});
+	$(document).on('click', 'h3.user-name', function(e) {
+		e.preventDefault();
+	
+		var valueWrap = $(this).parent(),
+			inputWrap = valueWrap.parent().find(".caption.input");
+	
+	
+		valueWrap.hide();
+		inputWrap.show();
+	
+		// console.log(valueWrap);
+		// console.log(inputWrap);
+	});
+
+	$(document).on('submit', '.caption.input form', function(e) {
+		e.preventDefault();
+		
+		var input = $(this).find("input"),
+			newName = input.val(),
+			inputWrap = input.parent().parent(),
+			valueWrap = inputWrap.parent().find(".caption.value"),
+			nameH3 = valueWrap.find("h3");
+			
+			
+			// console.log(newName);
+			
+		$.ajax({
+			dataType: "json",
+			method: "POST",
+			url: "index.php",
+			data: $(this).serialize(),
+			success: function (data, status, daco) {
+				
+				nameH3.text(data.userNewName);
+				
+				valueWrap.show();
+				inputWrap.hide();
+				
+				console.log(data);
+				console.log(status);
+				console.log(daco);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				// console.log(jqXHR);
+				console.log("response status:", errorThrown);
+			}
+		});
 
 
-// handle links with @href started with '#' only
-$(document).on('click', 'a[href^="#"]', function(e) {
-    // target element id
-    var id = $(this).attr('href');
+		console.log("ide");
+		return false;
+	});
 
-    // target element
-    var $id = $(id);
-    if ($id.length === 0) {
-        return;
-    }
-
-    // prevent standard hash navigation (avoid blinking in IE)
-    e.preventDefault();
-
-    // top position relative to the document
-    var pos = $(id).offset().top;
-
-    // animated top scrolling
-    $('body, html').animate({scrollTop: pos});
 });
 
 

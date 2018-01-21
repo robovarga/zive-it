@@ -15,14 +15,18 @@ $latteParameters = array(
 );
 
 // connect to database
-dibi::connect([
+
+$dbOptions = [
     'driver'   => 'mysqli',
     'host'     => 'mariadb101.websupport.sk',
     'username' => 'usnynhbq',
     'database' => 'usnynhbq',
     'password' => 'KKZUSMp5ci',
     'port' => '3312'
-]);
+];
+
+
+$database = new Dibi\Connection($dbOptions);
 
 
 
